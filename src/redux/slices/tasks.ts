@@ -39,12 +39,17 @@ export const TasksSlice = createSlice({
         }
         return task;
       });
-    }
+    },
+    createTask: (state, action: PayloadAction<Task>) => ([
+      ...state,
+      action.payload
+    ])
   }
 });
 
 export const {
   fetchTasks,
   markTaskAsDone,
-  updateTask
+  updateTask,
+  createTask
 } = TasksSlice.actions;

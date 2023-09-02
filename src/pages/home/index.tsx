@@ -4,6 +4,8 @@ import SidePane from "./SidePane";
 import { TASK_STATUS } from "../../types";
 import {
   Container,
+  CreateButton,
+  Header,
   Title,
   View
 } from "./index.styles";
@@ -29,7 +31,10 @@ const Home = () => {
     <View>
       <SidePane />
       <Container>
-        <Title>Tasks</Title>
+        <Header>
+          <Title>Tasks</Title>
+          <CreateButton to={'/newTask'}>Create</CreateButton>
+        </Header>
 
         {isListView && (
           <>

@@ -13,11 +13,9 @@ import {
   TaskId,
   Title
 } from "./index.styles";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../redux/hooks";
-import { updateTask } from "../../../redux/slices/tasks";
-
-
+import { createTask, updateTask } from "../../../redux/slices/tasks";
 
 const TaskDetails = ({
   id,
@@ -29,6 +27,9 @@ const TaskDetails = ({
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { pathname } = useLocation();
+
+  console.log(pathname);
 
   const formik = useFormik({
     initialValues: {
@@ -39,10 +40,25 @@ const TaskDetails = ({
     },
     validationSchema: ValidationSchema,
     onSubmit: values => {
-      dispatch(updateTask({
-        id,
-        ...values
-      }));
+      if (pathname === '/newTask') {
+        dispatch(createTask({
+          ...values,
+          id,
+          commentCount: 0,
+          createdAt: new Date().toISOString(),
+          comments: [],
+          isDeleted: false,
+          isPrivate: true,
+          modifiedAt: new Date().toISOString(),
+          ownerId: '1',
+          sharedWith: [],
+        }));
+      } else {
+        dispatch(updateTask({
+          id,
+          ...values
+        }));
+      }
 
       navigate('/');
     }
