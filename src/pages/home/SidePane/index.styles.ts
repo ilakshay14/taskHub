@@ -1,5 +1,7 @@
 import { CiViewTimeline } from "react-icons/ci";
+import { IoHelpCircleOutline } from "react-icons/io5";
 import { styled } from "../../../../styled-system/jsx";
+import { Link } from "react-router-dom";
 
 export const Container = styled("aside", {
   base: {
@@ -21,6 +23,9 @@ export const ViewSwitcher = styled("div", {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    '_lastOfType': {
+      marginTop: '30px',
+    }
   }
 });
 
@@ -33,6 +38,20 @@ export const ViewSwitcherText = styled("p", {
 });
 
 export const SwitcherIcon = styled(CiViewTimeline, {
+  base: {
+
+  }
+});
+
+export const HelpText = styled(Link, {
+  base: {
+    marginLeft: '0.5rem',
+    cursor: 'pointer',
+    color: 'rgba(0,0,0,0.7)',
+  }
+});
+
+export const HelpIcon = styled(IoHelpCircleOutline, {
   base: {
 
   }

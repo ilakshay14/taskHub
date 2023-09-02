@@ -1,4 +1,4 @@
-import { Container, SwitcherIcon, ViewSwitcher, ViewSwitcherText } from "./index.styles";
+import { Container, HelpIcon, HelpText, SwitcherIcon, ViewSwitcher, ViewSwitcherText } from "./index.styles";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { setView } from "../../../redux/slices/config";
 
@@ -18,6 +18,10 @@ const SidePane = () => {
         <ViewSwitcherText>
           Switch to {!isListView ? 'list' : 'column'} view
         </ViewSwitcherText>
+      </ViewSwitcher>
+      <ViewSwitcher>
+        <HelpIcon fontSize={"2xl"} />
+        <HelpText to={'/help'}>Help</HelpText>
       </ViewSwitcher>
     </Container>
   );
