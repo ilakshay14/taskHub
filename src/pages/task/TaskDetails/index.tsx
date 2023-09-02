@@ -40,7 +40,7 @@ const TaskDetails = ({
     validationSchema: ValidationSchema,
     onSubmit: values => {
       dispatch(updateTask({
-        taskId: id,
+        id,
         ...values
       }));
 
